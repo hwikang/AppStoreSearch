@@ -25,6 +25,10 @@
 		F859BA372C92EE2D004991CD /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = F859BA362C92EE2D004991CD /* RxRelay */; };
 		F859BA392C92EE37004991CD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F859BA382C92EE37004991CD /* Alamofire */; };
 		F859BA3B2C92EE3A004991CD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F859BA3A2C92EE3A004991CD /* SnapKit */; };
+		F859BAD62C93FCEF004991CD /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BAD52C93FCEF004991CD /* UserDefaultValues.swift */; };
+		F859BAD92C93FD6F004991CD /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BAD82C93FD6F004991CD /* AppRepository.swift */; };
+		F859BADC2C93FF36004991CD /* AppRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BADB2C93FF36004991CD /* AppRepositoryProtocol.swift */; };
+		F859BADF2C93FF76004991CD /* AppSearchUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BADE2C93FF76004991CD /* AppSearchUsecase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,10 @@
 		F859BA172C92E7FE004991CD /* AppNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNetwork.swift; sourceTree = "<group>"; };
 		F859BA192C92EB61004991CD /* AppListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListItem.swift; sourceTree = "<group>"; };
 		F859BA1D2C92EBCF004991CD /* AppDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailItem.swift; sourceTree = "<group>"; };
+		F859BAD52C93FCEF004991CD /* UserDefaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultValues.swift; sourceTree = "<group>"; };
+		F859BAD82C93FD6F004991CD /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
+		F859BADB2C93FF36004991CD /* AppRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F859BADE2C93FF76004991CD /* AppSearchUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchUsecase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +170,8 @@
 		F859B9FD2C92E542004991CD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F859BAD72C93FD62004991CD /* Repository */,
+				F859BAD42C93FCB5004991CD /* UserDefaults */,
 				F859B9FE2C92E639004991CD /* Network */,
 			);
 			path = Data;
@@ -179,6 +189,8 @@
 		F859BA102C92E763004991CD /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F859BADD2C93FF61004991CD /* Usecase */,
+				F859BADA2C93FF23004991CD /* RepositoryProtocol */,
 				F859BA142C92E774004991CD /* Entity */,
 			);
 			path = Domain;
@@ -216,6 +228,38 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F859BAD42C93FCB5004991CD /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				F859BAD52C93FCEF004991CD /* UserDefaultValues.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		F859BAD72C93FD62004991CD /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F859BAD82C93FD6F004991CD /* AppRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F859BADA2C93FF23004991CD /* RepositoryProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				F859BADB2C93FF36004991CD /* AppRepositoryProtocol.swift */,
+			);
+			path = RepositoryProtocol;
+			sourceTree = "<group>";
+		};
+		F859BADD2C93FF61004991CD /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				F859BADE2C93FF76004991CD /* AppSearchUsecase.swift */,
+			);
+			path = Usecase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,10 +408,14 @@
 				F859BA002C92E644004991CD /* NetworkManager.swift in Sources */,
 				F859BA1E2C92EBCF004991CD /* AppDetailItem.swift in Sources */,
 				F859BA132C92E770004991CD /* NetworkError.swift in Sources */,
+				F859BADF2C93FF76004991CD /* AppSearchUsecase.swift in Sources */,
 				F859B9D22C92E478004991CD /* AppListViewController.swift in Sources */,
+				F859BADC2C93FF36004991CD /* AppRepositoryProtocol.swift in Sources */,
 				F859BA182C92E7FE004991CD /* AppNetwork.swift in Sources */,
 				F859B9CE2C92E478004991CD /* AppDelegate.swift in Sources */,
 				F859B9D02C92E478004991CD /* SceneDelegate.swift in Sources */,
+				F859BAD92C93FD6F004991CD /* AppRepository.swift in Sources */,
+				F859BAD62C93FCEF004991CD /* UserDefaultValues.swift in Sources */,
 				F859BA162C92E7C5004991CD /* NetworkResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
