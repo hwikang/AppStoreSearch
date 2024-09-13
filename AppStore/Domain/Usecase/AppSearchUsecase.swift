@@ -6,28 +6,30 @@
 //
 
 import Foundation
-protocol AppSearchUsecaseProtocol {
+public protocol AppListUsecaseProtocol {
     func getQueryList() -> [String]
-    
+    func saveQueryList(query: String)
     func fetchAppList(term: String, limit: Int) async -> Result<[AppListItem], NetworkError>
     func fetchAppDetail(id: Int) async -> Result<[AppDetailItem], NetworkError>
 }
-public struct AppSearchUsecase: AppSearchUsecaseProtocol {
+public struct AppListUsecase: AppListUsecaseProtocol {
     private let repository: AppRepositoryProtocol
     public init(repository: AppRepositoryProtocol) {
         self.repository = repository
         
     }
-    func getQueryList() -> [String] {
+    public func getQueryList() -> [String] {
         repository.getQueryList()
     }
+    public func saveQueryList(query: String) {
+        repository.saveQuery(query: query)
+    }
     
-    func fetchAppList(term: String, limit: Int) async -> Result<[AppListItem], NetworkError> {
-        repository.saveQuery(query: term)
+    public func fetchAppList(term: String, limit: Int) async -> Result<[AppListItem], NetworkError> {
         return await repository.fetchAppList(term: term, limit: limit)
     }
     
-    func fetchAppDetail(id: Int) async -> Result<[AppDetailItem], NetworkError> {
+    public func fetchAppDetail(id: Int) async -> Result<[AppDetailItem], NetworkError> {
         return await repository.fetchAppDetail(id: id)
     }
     

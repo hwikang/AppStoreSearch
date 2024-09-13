@@ -29,6 +29,8 @@
 		F859BAD92C93FD6F004991CD /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BAD82C93FD6F004991CD /* AppRepository.swift */; };
 		F859BADC2C93FF36004991CD /* AppRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BADB2C93FF36004991CD /* AppRepositoryProtocol.swift */; };
 		F859BADF2C93FF76004991CD /* AppSearchUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BADE2C93FF76004991CD /* AppSearchUsecase.swift */; };
+		F859BAE22C9404A2004991CD /* AppListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BAE12C9404A2004991CD /* AppListViewModel.swift */; };
+		F859BAE52C9416EF004991CD /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BAE42C9416EF004991CD /* SearchTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		F859BAD82C93FD6F004991CD /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		F859BADB2C93FF36004991CD /* AppRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F859BADE2C93FF76004991CD /* AppSearchUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchUsecase.swift; sourceTree = "<group>"; };
+		F859BAE12C9404A2004991CD /* AppListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewModel.swift; sourceTree = "<group>"; };
+		F859BAE42C9416EF004991CD /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +145,7 @@
 			children = (
 				F859B9CD2C92E478004991CD /* AppDelegate.swift */,
 				F859B9CF2C92E478004991CD /* SceneDelegate.swift */,
-				F859B9D12C92E478004991CD /* AppListViewController.swift */,
+				F859BAE02C940491004991CD /* Presentation */,
 				F859BA102C92E763004991CD /* Domain */,
 				F859B9FD2C92E542004991CD /* Data */,
 				F859B9D62C92E47A004991CD /* Assets.xcassets */,
@@ -260,6 +264,24 @@
 				F859BADE2C93FF76004991CD /* AppSearchUsecase.swift */,
 			);
 			path = Usecase;
+			sourceTree = "<group>";
+		};
+		F859BAE02C940491004991CD /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F859BAE32C9416E5004991CD /* View */,
+				F859B9D12C92E478004991CD /* AppListViewController.swift */,
+				F859BAE12C9404A2004991CD /* AppListViewModel.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F859BAE32C9416E5004991CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F859BAE42C9416EF004991CD /* SearchTextField.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,10 +426,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F859BAE22C9404A2004991CD /* AppListViewModel.swift in Sources */,
 				F859BA1A2C92EB61004991CD /* AppListItem.swift in Sources */,
 				F859BA002C92E644004991CD /* NetworkManager.swift in Sources */,
 				F859BA1E2C92EBCF004991CD /* AppDetailItem.swift in Sources */,
 				F859BA132C92E770004991CD /* NetworkError.swift in Sources */,
+				F859BAE52C9416EF004991CD /* SearchTextField.swift in Sources */,
 				F859BADF2C93FF76004991CD /* AppSearchUsecase.swift in Sources */,
 				F859B9D22C92E478004991CD /* AppListViewController.swift in Sources */,
 				F859BADC2C93FF36004991CD /* AppRepositoryProtocol.swift in Sources */,
@@ -505,7 +529,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -562,7 +586,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -586,6 +610,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -613,6 +638,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
