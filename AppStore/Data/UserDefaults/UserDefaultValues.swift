@@ -8,17 +8,17 @@
 import Foundation
 public struct UserDefaultValues {
  
-    @UserDefault(key: "queryList")
-    public static var queryList: [String]?
+    @UserDefault(key: "queryList", defaultValue: [])
+    public static var queryList: [String]
     
 }
 @propertyWrapper
 public struct UserDefault<Value> {
     let key: String
-
-    public var wrappedValue: Value? {
+    let defaultValue: Value
+    public var wrappedValue: Value {
         get {
-            return UserDefaults.standard.object(forKey: key) as? Value
+            return UserDefaults.standard.object(forKey: key) as? Value ?? defaultValue
         }
         set {
             UserDefaults.standard.set(newValue, forKey: key)

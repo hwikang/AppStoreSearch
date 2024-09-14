@@ -11,6 +11,7 @@ public protocol AppListUsecaseProtocol {
     func saveQueryList(query: String)
     func fetchAppList(term: String, limit: Int) async -> Result<[AppListItem], NetworkError>
     func fetchAppDetail(id: Int) async -> Result<[AppDetailItem], NetworkError>
+    func extractConsonant(from text: String) -> String
 }
 public struct AppListUsecase: AppListUsecaseProtocol {
     private let repository: AppRepositoryProtocol
@@ -33,4 +34,26 @@ public struct AppListUsecase: AppListUsecaseProtocol {
         return await repository.fetchAppDetail(id: id)
     }
     
+    public func extractConsonant(from text: String) -> String {
+        
+        let koreanConsonants = ["ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
+
+        let koreamUnicodeStart: UInt32 = 44032
+        let koreamUnicodeEnd: UInt32 = 55203
+        let consonantOffset: UInt32 = 588
+        var result = ""
+        
+        for scalar in text.unicodeScalars {
+            let unicodeValue = scalar.value
+            
+            if unicodeValue >= koreamUnicodeStart && unicodeValue <= koreamUnicodeEnd {
+                let index = Int((unicodeValue - koreamUnicodeStart) / consonantOffset)
+                result += koreanConsonants[index]
+            } else {
+                result += String(scalar)
+            }
+        }
+        return result
+    }
+
 }

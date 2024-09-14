@@ -14,14 +14,14 @@ struct AppRepository: AppRepositoryProtocol {
     }
     
     public func getQueryList() -> [String] {
-        UserDefaultValues.queryList ?? []
+        UserDefaultValues.queryList
     }
     
     public func saveQuery(query: String) {
-        if var currentValue = UserDefaultValues.queryList {
-            currentValue.append(query)
-            UserDefaultValues.queryList = currentValue
-        }
+        var currentValue = UserDefaultValues.queryList
+        currentValue.removeAll { $0 == query }
+        currentValue.append(query)
+        UserDefaultValues.queryList = currentValue
     }
     
     

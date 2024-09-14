@@ -45,15 +45,22 @@ public struct AppListViewModel: AppListViewModelProtocol {
     }
     
     public func transform(input: Input) -> Output {
-        input.search.bind { searchQuery in
+        input.search
+            .filter({ !$0.isEmpty })
+            .bind { searchQuery in
+            print("searchQuery \(searchQuery)")
             fetchAppList(query: searchQuery)
             listType.accept(.app)
         }.disposed(by: disposeBag)
         input.queryChange.bind { query in
+            print("query \(query)")
+
             if query.isEmpty {
                 listType.accept(.query)
             } else {
-                let filterList = allQueryList.value.filter { $0.contains(query) }
+                let filterList = allQueryList.value.filter { 
+                    usecase.extractConsonant(from: $0).contains(usecase.extractConsonant(from: query))
+                }
                 filteredQueryList.accept(filterList)
                 listType.accept(.filteredQuery)
             }
@@ -70,7 +77,7 @@ public struct AppListViewModel: AppListViewModelProtocol {
         case .filteredQuery:
             return filteredQueryList.map { AppListCellData.filteredQuery($0) }
         case .query:
-            return allQueryList.map { AppListCellData.query($0) }
+            return  [AppListCellData.header("최근 검색어")] + allQueryList.map { AppListCellData.query($0) }
         }
     }
     
@@ -93,14 +100,28 @@ public struct AppListViewModel: AppListViewModelProtocol {
     }
     
     private func getQueryList() {
-        let list = usecase.getQueryList()
+        let list = Array(usecase.getQueryList().reversed())
         allQueryList.accept(list)
     }
-    
 }
 
 public enum AppListCellData {
+    case header(String)
     case query(String)
     case filteredQuery(String)
     case app(AppListItem)
+    
+    var id: String {
+        switch self {
+        case .header: return QueryListItemHeaderTableViewCell.id
+        case .app: return QueryListItemTableViewCell.id
+        case .filteredQuery: return FilteredQueryListItemTableViewCell.id
+        case .query: return QueryListItemTableViewCell.id
+        }
+    }
+}
+
+
+public protocol AppListCellProtocol {
+    func apply(cellData: AppListCellData)
 }
