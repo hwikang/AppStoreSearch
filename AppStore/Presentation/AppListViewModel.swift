@@ -114,7 +114,7 @@ public enum AppListCellData {
     var id: String {
         switch self {
         case .header: return QueryListItemHeaderTableViewCell.id
-        case .app: return QueryListItemTableViewCell.id
+        case .app: return AppListItemTableViewCell.id
         case .filteredQuery: return FilteredQueryListItemTableViewCell.id
         case .query: return QueryListItemTableViewCell.id
         }

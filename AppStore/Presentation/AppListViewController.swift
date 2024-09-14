@@ -22,9 +22,16 @@ final class AppListViewController: UIViewController {
         tableView.register(QueryListItemTableViewCell.self, forCellReuseIdentifier: QueryListItemTableViewCell.id)
         tableView.register(QueryListItemHeaderTableViewCell.self, forCellReuseIdentifier: QueryListItemHeaderTableViewCell.id)
         tableView.register(FilteredQueryListItemTableViewCell.self, forCellReuseIdentifier: FilteredQueryListItemTableViewCell.id)
+        tableView.register(AppListItemTableViewCell.self, forCellReuseIdentifier: AppListItemTableViewCell.id)
+
+        
         return tableView
     }()
-    private let searchTextField = SearchTextField()
+    private let searchTextField = {
+        let textField = SearchTextField()
+        textField.returnKeyType = .search
+        return textField
+    }()
     public init(viewModel: AppListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -32,18 +39,16 @@ final class AppListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchTextField.returnKeyType = .search
-        self.title = "검색"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
-        view.backgroundColor = .white
-        
         setUI()
         bindView()
         bindViewModel()
     }
 
     private func setUI() {
+        self.title = "검색"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        view.backgroundColor = .white
         view.addSubview(searchTextField)
         view.addSubview(appListTableView)
         setConstraints()
