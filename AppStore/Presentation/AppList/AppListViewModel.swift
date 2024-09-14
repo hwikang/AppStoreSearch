@@ -18,11 +18,12 @@ public struct AppListViewModel: AppListViewModelProtocol {
     private let usecase: AppListUsecaseProtocol
     private let disposeBag = DisposeBag()
     
-    private let listType = BehaviorRelay<ListType>(value: .query)
-    private let allQueryList = BehaviorRelay<[String]>(value: [])
+    let listType = BehaviorRelay<ListType>(value: .query)
+    let allQueryList = BehaviorRelay<[String]>(value: [])
     private let filteredQueryList = BehaviorRelay<[String]>(value: [])
     private let appList = BehaviorRelay<[AppListItem]>(value: [])
     private let error = PublishRelay<String>()
+    
     public init(usecase: AppListUsecaseProtocol) {
         self.usecase = usecase
         getQueryList()
@@ -38,7 +39,7 @@ public struct AppListViewModel: AppListViewModelProtocol {
         let error: Observable<String>
     }
     
-    private enum ListType {
+    enum ListType {
         case query
         case filteredQuery
         case app

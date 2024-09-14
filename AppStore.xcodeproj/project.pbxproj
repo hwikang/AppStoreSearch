@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		F82362442C95BC0300C08CCC /* AppDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82362432C95BC0300C08CCC /* AppDetailSection.swift */; };
+		F82362482C95BEB700C08CCC /* AppListUsecaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82362472C95BEB700C08CCC /* AppListUsecaseTests.swift */; };
+		F823624B2C95BF0900C08CCC /* AppRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F823624A2C95BF0900C08CCC /* AppRepositoryMock.swift */; };
+		F823624D2C95C2B700C08CCC /* AppListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F823624C2C95C2B700C08CCC /* AppListViewModelTests.swift */; };
+		F823624F2C95C32700C08CCC /* AppUsecaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F823624E2C95C32700C08CCC /* AppUsecaseMock.swift */; };
+		F82362512C95C86900C08CCC /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = F82362502C95C86900C08CCC /* RxTest */; };
 		F859B9CE2C92E478004991CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859B9CD2C92E478004991CD /* AppDelegate.swift */; };
 		F859B9D02C92E478004991CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859B9CF2C92E478004991CD /* SceneDelegate.swift */; };
 		F859B9D22C92E478004991CD /* AppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859B9D12C92E478004991CD /* AppListViewController.swift */; };
@@ -79,6 +84,10 @@
 
 /* Begin PBXFileReference section */
 		F82362432C95BC0300C08CCC /* AppDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailSection.swift; sourceTree = "<group>"; };
+		F82362472C95BEB700C08CCC /* AppListUsecaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListUsecaseTests.swift; sourceTree = "<group>"; };
+		F823624A2C95BF0900C08CCC /* AppRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepositoryMock.swift; sourceTree = "<group>"; };
+		F823624C2C95C2B700C08CCC /* AppListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewModelTests.swift; sourceTree = "<group>"; };
+		F823624E2C95C32700C08CCC /* AppUsecaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUsecaseMock.swift; sourceTree = "<group>"; };
 		F859B9CA2C92E478004991CD /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F859B9CD2C92E478004991CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F859B9CF2C92E478004991CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F82362512C95C86900C08CCC /* RxTest in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F82362492C95BEF900C08CCC /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				F823624A2C95BF0900C08CCC /* AppRepositoryMock.swift */,
+				F823624E2C95C32700C08CCC /* AppUsecaseMock.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		F859B9C12C92E478004991CD = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +205,9 @@
 			isa = PBXGroup;
 			children = (
 				F859B9E42C92E47B004991CD /* AppStoreTests.swift */,
+				F82362492C95BEF900C08CCC /* Mock */,
+				F82362472C95BEB700C08CCC /* AppListUsecaseTests.swift */,
+				F823624C2C95C2B700C08CCC /* AppListViewModelTests.swift */,
 			);
 			path = AppStoreTests;
 			sourceTree = "<group>";
@@ -400,6 +422,9 @@
 				F859B9E22C92E47B004991CD /* PBXTargetDependency */,
 			);
 			name = AppStoreTests;
+			packageProductDependencies = (
+				F82362502C95C86900C08CCC /* RxTest */,
+			);
 			productName = AppStoreTests;
 			productReference = F859B9E02C92E47B004991CD /* AppStoreTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -536,7 +561,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F823624B2C95BF0900C08CCC /* AppRepositoryMock.swift in Sources */,
 				F859B9E52C92E47B004991CD /* AppStoreTests.swift in Sources */,
+				F823624D2C95C2B700C08CCC /* AppListViewModelTests.swift in Sources */,
+				F823624F2C95C32700C08CCC /* AppUsecaseMock.swift in Sources */,
+				F82362482C95BEB700C08CCC /* AppListUsecaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,6 +922,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F82362502C95C86900C08CCC /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F859BA062C92E6E2004991CD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
 		F859BA322C92EE26004991CD /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F859BA062C92E6E2004991CD /* XCRemoteSwiftPackageReference "RxSwift" */;

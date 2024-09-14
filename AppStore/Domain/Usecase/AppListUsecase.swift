@@ -51,6 +51,7 @@ public struct AppListUsecase: AppListUsecaseProtocol {
         }
         return result
     }
+    
     private func querySpacing(query: String) -> String {
         query.replacingOccurrences(of: " ", with: "+")
     }
