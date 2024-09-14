@@ -91,12 +91,13 @@ final class AppListItemTableViewCell: UITableViewCell, AppListCellProtocol {
 
         appImageView.kf.setImage(with: URL(string: appItem.iconUrl))
         setScreenshot(screenshotUrls: appItem.screenshotUrls)
-//        ratingCountLabel.text = appItem.userRatingCount
+        setRatingCountLabel(count: appItem.userRatingCount)
         setStar(rating: appItem.averageUserRating)
 
     }
     
     private func setScreenshot(screenshotUrls: [String]) {
+
         screenshotUrls.prefix(3).forEach {
             let imageView = UIImageView()
             imageView.kf.setImage(with: URL(string: $0))
@@ -124,8 +125,19 @@ final class AppListItemTableViewCell: UITableViewCell, AppListCellProtocol {
         }
     }
     
+    private func setRatingCountLabel(count: Int) {
+        if count >= 100000 {
+            ratingCountLabel.text = "\(count / 10000)만"
+        } else if count >= 10000 {
+            ratingCountLabel.text = "\((Double(count) / 10000 * 10).rounded() / 10)만"
+        } else if count >= 1000 {
+            ratingCountLabel.text = "\((Double(count) / 1000 * 10).rounded() / 10)천"
+        } else {
+            ratingCountLabel.text = "\(count)"
+        }
+    }
     
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

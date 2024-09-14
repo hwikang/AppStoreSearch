@@ -42,7 +42,8 @@ final public class SearchTextField: UITextField {
          
          clearButton.rx.tap.bind { [weak self] in
              self?.text = nil
-             self?.sendActions(for: .valueChanged)
+             self?.becomeFirstResponder()
+             self?.sendActions(for: .editingChanged)
          }.disposed(by: disposeBag)
     }
     required init?(coder: NSCoder) {

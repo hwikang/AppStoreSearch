@@ -59,7 +59,7 @@ final class AppListViewController: UIViewController {
         let queryChange = searchTextField.rx.controlEvent(.editingChanged)
             .withLatestFrom(searchTextField.rx.text.orEmpty)
         let search = searchTextField.rx.controlEvent(.editingDidEnd)
-            .withLatestFrom(searchTextField.rx.text.orEmpty)
+            .withLatestFrom(searchTextField.rx.text.orEmpty).debounce(.milliseconds(300), scheduler: MainScheduler.instance)
         let output = viewModel.transform(input: AppListViewModel.Input(queryChange: queryChange,
                                                           search: search))
         
@@ -73,16 +73,16 @@ final class AppListViewController: UIViewController {
     private func bindView() {
         searchTextField.rx.controlEvent(.editingDidBegin)
             .bind { [weak self] in
-                self?.navigationController?.setNavigationBarHidden(true, animated: true)
-                UIView.animate(withDuration: 0.3) {
-                    self?.view.frame.origin.y = 0
-                }
+                self?.hideNavigationBar()
             }.disposed(by: disposeBag)
         
         searchTextField.rx.controlEvent(.editingDidEnd)
             .withLatestFrom(searchTextField.rx.text.orEmpty)
             .bind { [weak self] query in
-                guard let self = self, query.isEmpty else { return }
+                guard let self = self, query.isEmpty else {
+                    self?.hideNavigationBar()
+                    return
+                }
                 navigationController?.setNavigationBarHidden(false, animated: true)
                 UIView.animate(withDuration: 0.3) {
                     self.view.frame.origin.y = self.view.safeAreaInsets.top
@@ -94,6 +94,7 @@ final class AppListViewController: UIViewController {
             case .query(let query), .filteredQuery(let query):
                 print(query)
                 self?.searchTextField.text = query
+                self?.view.endEditing(true)
                 self?.searchTextField.sendActions(for: .editingDidEnd)
             case .app(let appItem):
                 print(appItem)
@@ -110,6 +111,13 @@ final class AppListViewController: UIViewController {
         appListTableView.snp.makeConstraints { make in
             make.top.equalTo(searchTextField.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+    
+    private func hideNavigationBar() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.view.frame.origin.y = 0
         }
     }
     required init?(coder: NSCoder) {
