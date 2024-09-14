@@ -48,13 +48,10 @@ public struct AppListViewModel: AppListViewModelProtocol {
         input.search
             .filter({ !$0.isEmpty })
             .bind { searchQuery in
-            print("searchQuery \(searchQuery)")
             fetchAppList(query: searchQuery)
             listType.accept(.app)
         }.disposed(by: disposeBag)
         input.queryChange.bind { query in
-            print("query \(query)")
-
             if query.isEmpty {
                 listType.accept(.query)
             } else {
@@ -103,25 +100,4 @@ public struct AppListViewModel: AppListViewModelProtocol {
         let list = Array(usecase.getQueryList().reversed())
         allQueryList.accept(list)
     }
-}
-
-public enum AppListCellData {
-    case header(String)
-    case query(String)
-    case filteredQuery(String)
-    case app(AppListItem)
-    
-    var id: String {
-        switch self {
-        case .header: return QueryListItemHeaderTableViewCell.id
-        case .app: return AppListItemTableViewCell.id
-        case .filteredQuery: return FilteredQueryListItemTableViewCell.id
-        case .query: return QueryListItemTableViewCell.id
-        }
-    }
-}
-
-
-public protocol AppListCellProtocol {
-    func apply(cellData: AppListCellData)
 }

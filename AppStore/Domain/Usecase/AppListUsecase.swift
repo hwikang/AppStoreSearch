@@ -1,5 +1,5 @@
 //
-//  AppSearchUsecase.swift
+//  AppListUsecase.swift
 //  AppStore
 //
 //  Created by paytalab on 9/13/24.
@@ -10,7 +10,6 @@ public protocol AppListUsecaseProtocol {
     func getQueryList() -> [String]
     func saveQueryList(query: String)
     func fetchAppList(term: String, limit: Int) async -> Result<[AppListItem], NetworkError>
-    func fetchAppDetail(id: Int) async -> Result<[AppDetailItem], NetworkError>
     func extractConsonant(from text: String) -> String
 }
 public struct AppListUsecase: AppListUsecaseProtocol {
@@ -27,11 +26,8 @@ public struct AppListUsecase: AppListUsecaseProtocol {
     }
     
     public func fetchAppList(term: String, limit: Int) async -> Result<[AppListItem], NetworkError> {
-        return await repository.fetchAppList(term: term, limit: limit)
-    }
-    
-    public func fetchAppDetail(id: Int) async -> Result<[AppDetailItem], NetworkError> {
-        return await repository.fetchAppDetail(id: id)
+        return await repository.fetchAppList(term: querySpacing(query: term),
+                                             limit: limit)
     }
     
     public func extractConsonant(from text: String) -> String {
@@ -55,5 +51,7 @@ public struct AppListUsecase: AppListUsecaseProtocol {
         }
         return result
     }
-
+    private func querySpacing(query: String) -> String {
+        query.replacingOccurrences(of: " ", with: "+")
+    }
 }

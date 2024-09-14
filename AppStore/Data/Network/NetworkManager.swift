@@ -36,6 +36,7 @@ final public class NetworkManager {
                 return .success(networkResponse.results)
             } catch {
                 return .failure(NetworkError.failToDecode(error.localizedDescription))
+
             }
         } else {
             return .failure(NetworkError.serverError(response.statusCode))

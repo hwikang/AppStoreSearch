@@ -17,9 +17,10 @@ public struct AppDetailItem: Decodable {
     let screenshotUrls: [String]
     let releaseNotes: String
     let description: String
-    let sellerUrl: String
+    let sellerUrl: String?
     let trackViewUrl: String
     let artistName: String
+    let trackContentRating: String
     
     enum CodingKeys: String, CodingKey {
         case name = "trackName"
@@ -34,6 +35,7 @@ public struct AppDetailItem: Decodable {
         case sellerUrl
         case trackViewUrl
         case artistName
+        case trackContentRating
     }
     
     public init(from decoder: any Decoder) throws {
@@ -47,9 +49,10 @@ public struct AppDetailItem: Decodable {
         self.screenshotUrls = try container.decode([String].self, forKey: .screenshotUrls)
         self.releaseNotes = try container.decode(String.self, forKey: .releaseNotes)
         self.description = try container.decode(String.self, forKey: .description)
-        self.sellerUrl = try container.decode(String.self, forKey: .sellerUrl)
+        self.sellerUrl = try container.decodeIfPresent(String.self, forKey: .sellerUrl)
         self.trackViewUrl = try container.decode(String.self, forKey: .trackViewUrl)
         self.artistName = try container.decode(String.self, forKey: .artistName)
+        self.trackContentRating = try container.decode(String.self, forKey: .trackContentRating)
     }
 }
 

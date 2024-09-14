@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import RxCocoa
 import RxSwift
-import Alamofire
+
 
 final class AppListViewController: UIViewController {
 
@@ -63,7 +63,9 @@ final class AppListViewController: UIViewController {
         let output = viewModel.transform(input: AppListViewModel.Input(queryChange: queryChange,
                                                           search: search))
         
-        output.cellData.bind(to: appListTableView.rx.items) { tableView, indexPath, element in
+        output.cellData
+            .observe(on: MainScheduler.instance)
+            .bind(to: appListTableView.rx.items) { tableView, indexPath, element in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: element.id) else { return UITableViewCell() }
             (cell as? AppListCellProtocol)?.apply(cellData: element)
             return cell
@@ -83,21 +85,17 @@ final class AppListViewController: UIViewController {
                     self?.hideNavigationBar()
                     return
                 }
-                navigationController?.setNavigationBarHidden(false, animated: true)
-                UIView.animate(withDuration: 0.3) {
-                    self.view.frame.origin.y = self.view.safeAreaInsets.top
-                }
+                showNavigationBar()
             }.disposed(by: disposeBag)
         
         appListTableView.rx.modelSelected(AppListCellData.self).bind { [weak self] cellData in
             switch cellData {
             case .query(let query), .filteredQuery(let query):
-                print(query)
                 self?.searchTextField.text = query
                 self?.view.endEditing(true)
                 self?.searchTextField.sendActions(for: .editingDidEnd)
             case .app(let appItem):
-                print(appItem)
+                self?.pushAppDetailVC(id: appItem.id)
             default: return
             }
         }.disposed(by: disposeBag)
@@ -119,6 +117,22 @@ final class AppListViewController: UIViewController {
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.view.frame.origin.y = 0
         }
+    }
+    
+    private func showNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+            view.frame.origin.y = view.safeAreaInsets.top
+        }
+    }
+    
+    private func pushAppDetailVC(id: Int) {
+        let appRP = AppRepository(network: AppNetwork(manager: NetworkManager()))
+        let appDetailUC = AppDetailUsecase(repository: appRP)
+        let appDetaulVM = AppDetailViewModel(usecase: appDetailUC, id: id)
+        let appDetailVC = AppDetailViewController(viewModel: appDetaulVM)
+        navigationController?.pushViewController(appDetailVC, animated: true)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
