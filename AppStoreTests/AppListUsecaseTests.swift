@@ -14,18 +14,16 @@ final class AppListUsecaseTests: XCTestCase {
         super.setUp()
         usecase = AppListUsecase(repository: AppRepositoryMock())
     }
-    
+    //초성 추출 테스트
     func testExtractConsonant() {
-        // Given
         let text = "카카오뱅크"
         let expected = "ㅋㅋㅇㅂㅋ"
         
-        // When
         let result = usecase.extractConsonant(from: text)
         
-        // Then
         XCTAssertEqual(result, expected)
     }
+    
     override func tearDown() {
         super.tearDown()
         usecase = nil

@@ -28,8 +28,7 @@ public struct AppDetailViewModel: AppDetailViewModelProtocol {
         fetchAppDetail()
     }
     
-    public struct Input {
-    }
+    public struct Input { }
     
     public struct Output {
         let snapshot: Observable<NSDiffableDataSourceSnapshot<AppDetailSecion, AppDetailCellData>>
