@@ -18,8 +18,6 @@
 		F859B9D22C92E478004991CD /* AppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859B9D12C92E478004991CD /* AppListViewController.swift */; };
 		F859B9D72C92E47A004991CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F859B9D62C92E47A004991CD /* Assets.xcassets */; };
 		F859B9E52C92E47B004991CD /* AppStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859B9E42C92E47B004991CD /* AppStoreTests.swift */; };
-		F859B9EF2C92E47B004991CD /* AppStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859B9EE2C92E47B004991CD /* AppStoreUITests.swift */; };
-		F859B9F12C92E47B004991CD /* AppStoreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859B9F02C92E47B004991CD /* AppStoreUITestsLaunchTests.swift */; };
 		F859BA002C92E644004991CD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859B9FF2C92E644004991CD /* NetworkManager.swift */; };
 		F859BA132C92E770004991CD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BA122C92E770004991CD /* NetworkError.swift */; };
 		F859BA162C92E7C5004991CD /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BA152C92E7C5004991CD /* NetworkResponse.swift */; };
@@ -62,13 +60,6 @@
 			remoteGlobalIDString = F859B9C92C92E478004991CD;
 			remoteInfo = AppStore;
 		};
-		F859B9EB2C92E47B004991CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F859B9C22C92E478004991CD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F859B9C92C92E478004991CD;
-			remoteInfo = AppStore;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -98,9 +89,6 @@
 		F859B9DB2C92E47A004991CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F859B9E02C92E47B004991CD /* AppStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F859B9E42C92E47B004991CD /* AppStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreTests.swift; sourceTree = "<group>"; };
-		F859B9EA2C92E47B004991CD /* AppStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F859B9EE2C92E47B004991CD /* AppStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreUITests.swift; sourceTree = "<group>"; };
-		F859B9F02C92E47B004991CD /* AppStoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F859B9FF2C92E644004991CD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F859BA122C92E770004991CD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		F859BA152C92E7C5004991CD /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
@@ -151,13 +139,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F859B9E72C92E47B004991CD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -175,7 +156,6 @@
 			children = (
 				F859B9CC2C92E478004991CD /* AppStore */,
 				F859B9E32C92E47B004991CD /* AppStoreTests */,
-				F859B9ED2C92E47B004991CD /* AppStoreUITests */,
 				F859B9CB2C92E478004991CD /* Products */,
 				F859BA252C92ED2D004991CD /* Frameworks */,
 			);
@@ -186,7 +166,6 @@
 			children = (
 				F859B9CA2C92E478004991CD /* AppStore.app */,
 				F859B9E02C92E47B004991CD /* AppStoreTests.xctest */,
-				F859B9EA2C92E47B004991CD /* AppStoreUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,15 +194,6 @@
 				F861A6282C9697BB00B7899F /* AppDetailUsecaseTests.swift */,
 			);
 			path = AppStoreTests;
-			sourceTree = "<group>";
-		};
-		F859B9ED2C92E47B004991CD /* AppStoreUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F859B9EE2C92E47B004991CD /* AppStoreUITests.swift */,
-				F859B9F02C92E47B004991CD /* AppStoreUITestsLaunchTests.swift */,
-			);
-			path = AppStoreUITests;
 			sourceTree = "<group>";
 		};
 		F859B9FD2C92E542004991CD /* Data */ = {
@@ -435,24 +405,6 @@
 			productReference = F859B9E02C92E47B004991CD /* AppStoreTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F859B9E92C92E47B004991CD /* AppStoreUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F859B9FA2C92E47B004991CD /* Build configuration list for PBXNativeTarget "AppStoreUITests" */;
-			buildPhases = (
-				F859B9E62C92E47B004991CD /* Sources */,
-				F859B9E72C92E47B004991CD /* Frameworks */,
-				F859B9E82C92E47B004991CD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F859B9EC2C92E47B004991CD /* PBXTargetDependency */,
-			);
-			name = AppStoreUITests;
-			productName = AppStoreUITests;
-			productReference = F859B9EA2C92E47B004991CD /* AppStoreUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -467,10 +419,6 @@
 						CreatedOnToolsVersion = 15.4;
 					};
 					F859B9DF2C92E47B004991CD = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = F859B9C92C92E478004991CD;
-					};
-					F859B9E92C92E47B004991CD = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = F859B9C92C92E478004991CD;
 					};
@@ -497,7 +445,6 @@
 			targets = (
 				F859B9C92C92E478004991CD /* AppStore */,
 				F859B9DF2C92E47B004991CD /* AppStoreTests */,
-				F859B9E92C92E47B004991CD /* AppStoreUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -512,13 +459,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F859B9DE2C92E47B004991CD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F859B9E82C92E47B004991CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -577,15 +517,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F859B9E62C92E47B004991CD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F859B9F12C92E47B004991CD /* AppStoreUITestsLaunchTests.swift in Sources */,
-				F859B9EF2C92E47B004991CD /* AppStoreUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -593,11 +524,6 @@
 			isa = PBXTargetDependency;
 			target = F859B9C92C92E478004991CD /* AppStore */;
 			targetProxy = F859B9E12C92E47B004991CD /* PBXContainerItemProxy */;
-		};
-		F859B9EC2C92E47B004991CD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F859B9C92C92E478004991CD /* AppStore */;
-			targetProxy = F859B9EB2C92E47B004991CD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -817,42 +743,6 @@
 			};
 			name = Release;
 		};
-		F859B9FB2C92E47B004991CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L3B9L4FDBB;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = inc.simonkang.AppStoreUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AppStore;
-			};
-			name = Debug;
-		};
-		F859B9FC2C92E47B004991CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L3B9L4FDBB;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = inc.simonkang.AppStoreUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AppStore;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -879,15 +769,6 @@
 			buildConfigurations = (
 				F859B9F82C92E47B004991CD /* Debug */,
 				F859B9F92C92E47B004991CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F859B9FA2C92E47B004991CD /* Build configuration list for PBXNativeTarget "AppStoreUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F859B9FB2C92E47B004991CD /* Debug */,
-				F859B9FC2C92E47B004991CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
