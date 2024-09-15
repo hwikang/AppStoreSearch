@@ -39,6 +39,8 @@
 		F859BAE52C9416EF004991CD /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BAE42C9416EF004991CD /* SearchTextField.swift */; };
 		F859BAE82C942497004991CD /* QueryListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BAE72C942497004991CD /* QueryListItemTableViewCell.swift */; };
 		F859BB102C943654004991CD /* QueryListItemHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F859BB0F2C943654004991CD /* QueryListItemHeaderTableViewCell.swift */; };
+		F861A6272C968C4600B7899F /* AppDetailReleaseNoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F861A6262C968C4600B7899F /* AppDetailReleaseNoteCollectionViewCell.swift */; };
+		F861A6292C9697BB00B7899F /* AppDetailUsecaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F861A6282C9697BB00B7899F /* AppDetailUsecaseTests.swift */; };
 		F8F71E062C9523D7006795D3 /* FilteredQueryListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F71E052C9523D7006795D3 /* FilteredQueryListItemTableViewCell.swift */; };
 		F8F71E082C952D74006795D3 /* AppListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F71E072C952D74006795D3 /* AppListItemTableViewCell.swift */; };
 		F8F71E0B2C95301E006795D3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F8F71E0A2C95301E006795D3 /* Kingfisher */; };
@@ -113,6 +115,8 @@
 		F859BAE42C9416EF004991CD /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		F859BAE72C942497004991CD /* QueryListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryListItemTableViewCell.swift; sourceTree = "<group>"; };
 		F859BB0F2C943654004991CD /* QueryListItemHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryListItemHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		F861A6262C968C4600B7899F /* AppDetailReleaseNoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailReleaseNoteCollectionViewCell.swift; sourceTree = "<group>"; };
+		F861A6282C9697BB00B7899F /* AppDetailUsecaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailUsecaseTests.swift; sourceTree = "<group>"; };
 		F8F71E052C9523D7006795D3 /* FilteredQueryListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredQueryListItemTableViewCell.swift; sourceTree = "<group>"; };
 		F8F71E072C952D74006795D3 /* AppListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListItemTableViewCell.swift; sourceTree = "<group>"; };
 		F8F71E0E2C9549F4006795D3 /* AppDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewModel.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 				F82362492C95BEF900C08CCC /* Mock */,
 				F82362472C95BEB700C08CCC /* AppListUsecaseTests.swift */,
 				F823624C2C95C2B700C08CCC /* AppListViewModelTests.swift */,
+				F861A6282C9697BB00B7899F /* AppDetailUsecaseTests.swift */,
 			);
 			path = AppStoreTests;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 				F8F71E1B2C9562E3006795D3 /* AppDetailHeaderView.swift */,
 				F8F71E192C955A6D006795D3 /* AppDetailScreenshotCollectionViewCell.swift */,
 				F8F71E1D2C9568FC006795D3 /* AppDetailDescriptionCollectionViewCell.swift */,
+				F861A6262C968C4600B7899F /* AppDetailReleaseNoteCollectionViewCell.swift */,
 				F82362432C95BC0300C08CCC /* AppDetailSection.swift */,
 			);
 			path = View;
@@ -554,6 +560,7 @@
 				F859BAE82C942497004991CD /* QueryListItemTableViewCell.swift in Sources */,
 				F82362442C95BC0300C08CCC /* AppDetailSection.swift in Sources */,
 				F859BA162C92E7C5004991CD /* NetworkResponse.swift in Sources */,
+				F861A6272C968C4600B7899F /* AppDetailReleaseNoteCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +573,7 @@
 				F823624D2C95C2B700C08CCC /* AppListViewModelTests.swift in Sources */,
 				F823624F2C95C32700C08CCC /* AppUsecaseMock.swift in Sources */,
 				F82362482C95BEB700C08CCC /* AppListUsecaseTests.swift in Sources */,
+				F861A6292C9697BB00B7899F /* AppDetailUsecaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

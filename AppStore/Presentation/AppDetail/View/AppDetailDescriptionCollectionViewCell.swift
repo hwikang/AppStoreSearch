@@ -36,20 +36,7 @@ final class AppDetailDescriptionCollectionViewCell: UICollectionViewCell, AppDet
 
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(showMoreButton)
-        border.snp.makeConstraints { make in
-            make.height.equalTo(1)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalToSuperview()
-        }
-        descriptionLabel.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview().inset(20)
-        }
-        showMoreButton.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(8)
-            make.width.equalTo(120)
-            make.height.equalTo(40)
-            make.trailing.bottom.equalToSuperview().inset(20)
-        }
+        setConstraints()
         showMoreButton.rx.tap.bind { [weak self] in
             self?.descriptionLabel.numberOfLines = 0
             self?.showMoreButton.isHidden = true
@@ -61,7 +48,20 @@ final class AppDetailDescriptionCollectionViewCell: UICollectionViewCell, AppDet
         guard case let .description(description) = cellData else { return }
         descriptionLabel.text = description
     }
-    
+    private func setConstraints() {
+        border.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalToSuperview()
+        }
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(20)
+        }
+        showMoreButton.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(8)
+            make.trailing.bottom.equalToSuperview().inset(20)
+        }
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

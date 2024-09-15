@@ -45,9 +45,11 @@ public struct AppDetailViewModel: AppDetailViewModelProtocol {
     private func createSnapshot(appDetail: AppDetailItem) -> NSDiffableDataSourceSnapshot<AppDetailSecion, AppDetailCellData> {
         
         var snapshot = NSDiffableDataSourceSnapshot<AppDetailSecion, AppDetailCellData>()
-        snapshot.appendSections([.header, .screenshot, .description])
+        snapshot.appendSections([.header, .releaseNote, .screenshot, .description])
         snapshot.appendItems([.header(imageURL: appDetail.iconUrl, title: appDetail.name,
                                       subtitle: appDetail.genres.first ?? "")], toSection: .header)
+        snapshot.appendItems([.releaseNote(releaseNote: appDetail.releaseNotes, appVersion: appDetail.version, releaseDateString:  usecase.timeDifference(dateString: appDetail.currentVersionReleaseDate))], toSection: .releaseNote)
+       
         let screenshotItems = appDetail.screenshotUrls.map { AppDetailCellData.screenshot(imageURL: $0) }
         snapshot.appendItems(screenshotItems, toSection: .screenshot)
         snapshot.appendItems([.description(description: appDetail.description)], toSection: .description)

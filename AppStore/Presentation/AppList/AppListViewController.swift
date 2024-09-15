@@ -15,6 +15,7 @@ final class AppListViewController: UIViewController {
 
     private let viewModel: AppListViewModelProtocol
     private let disposeBag = DisposeBag()
+    
     private let appListTableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -27,6 +28,7 @@ final class AppListViewController: UIViewController {
         
         return tableView
     }()
+    
     private let searchTextField = {
         let textField = SearchTextField()
         textField.returnKeyType = .search
@@ -47,7 +49,6 @@ final class AppListViewController: UIViewController {
     private func setUI() {
         self.title = "검색"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
         view.backgroundColor = .white
         view.addSubview(searchTextField)
         view.addSubview(appListTableView)
@@ -70,6 +71,14 @@ final class AppListViewController: UIViewController {
             (cell as? AppListCellProtocol)?.apply(cellData: element)
             return cell
         }.disposed(by: disposeBag)
+        
+        output.error.observe(on: MainScheduler.instance)
+            .bind { [weak self] errorMessage in
+                let alert = UIAlertController(title: "에러", message: errorMessage, preferredStyle: .alert)
+                alert.addAction(.init(title: "확인", style: .default))
+                self?.present(alert, animated: true, completion: nil)
+
+            }.disposed(by: disposeBag)
         
     }
     private func bindView() {
@@ -104,7 +113,7 @@ final class AppListViewController: UIViewController {
         searchTextField.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(40)
+            make.height.equalTo(44)
         }
         appListTableView.snp.makeConstraints { make in
             make.top.equalTo(searchTextField.snp.bottom)
@@ -114,18 +123,10 @@ final class AppListViewController: UIViewController {
     
     private func hideNavigationBar() {
         navigationController?.setNavigationBarHidden(true, animated: true)
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.view.frame.origin.y = 0
-        }
     }
     
     private func showNavigationBar() {
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            guard let self = self else { return }
-            view.frame.origin.y = view.safeAreaInsets.top
-        }
-    }
+        navigationController?.setNavigationBarHidden(false, animated: true)    }
     
     private func pushAppDetailVC(id: Int) {
         let appRP = AppRepository(network: AppNetwork(manager: NetworkManager()))

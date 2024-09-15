@@ -39,7 +39,19 @@ final class AppDetailHeaderCollectionViewCell: UICollectionViewCell, AppDetailCe
         contentView.addSubview(appTitleLabel)
         contentView.addSubview(subtitleLabel)
         contentView.addSubview(border)
-
+        setConstraints()
+    }
+   
+    
+    func apply(cellData: AppDetailCellData) {
+        guard case let .header(imageURL, title, subtitle) = cellData else { return }
+        appTitleLabel.text = title
+        subtitleLabel.text = subtitle
+        appImageView.kf.setImage(with: URL(string: imageURL))
+        
+    }
+    private func setConstraints() {
+        
         appImageView.snp.makeConstraints { make in
             make.top.equalTo(10)
             make.leading.bottom.equalToSuperview().inset(20)
@@ -60,16 +72,6 @@ final class AppDetailHeaderCollectionViewCell: UICollectionViewCell, AppDetailCe
             make.bottom.equalToSuperview()
         }
     }
-   
-    
-    func apply(cellData: AppDetailCellData) {
-        guard case let .header(imageURL, title, subtitle) = cellData else { return }
-        appTitleLabel.text = title
-        subtitleLabel.text = subtitle
-        appImageView.kf.setImage(with: URL(string: imageURL))
-        
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -36,6 +36,7 @@ final public class SearchTextField: UITextField {
         placeholder = "검색어를 입력해 주세요"
     }
     private func bindView() {
+        
          rx.text.map({ $0?.isEmpty != false })
              .bind(to: clearButton.rx.isHidden)
              .disposed(by: disposeBag)

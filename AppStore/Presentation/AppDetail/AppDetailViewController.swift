@@ -23,7 +23,7 @@ final class AppDetailViewController: UIViewController {
         collectionView.register(AppDetailHeaderCollectionViewCell.self, forCellWithReuseIdentifier: AppDetailHeaderCollectionViewCell.id)
         collectionView.register(AppDetailScreenshotCollectionViewCell.self, forCellWithReuseIdentifier: AppDetailScreenshotCollectionViewCell.id)
         collectionView.register(AppDetailDescriptionCollectionViewCell.self, forCellWithReuseIdentifier: AppDetailDescriptionCollectionViewCell.id)
-
+        collectionView.register(AppDetailReleaseNoteCollectionViewCell.self, forCellWithReuseIdentifier: AppDetailReleaseNoteCollectionViewCell.id)
         
         return collectionView
     }()
@@ -32,10 +32,12 @@ final class AppDetailViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: false)
 
         setUI()
         bindView()
@@ -45,24 +47,34 @@ final class AppDetailViewController: UIViewController {
         diffableDataSource = UICollectionViewDiffableDataSource(collectionView: appCollectionView) { [weak self] collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.id, for: indexPath)
             (cell as? AppDetailCellProtocol)?.apply(cellData: item)
+            
             if let cell = cell as? AppDetailDescriptionCollectionViewCell {
-                cell.onExpanded = {
-                    if let sectionSnapshot = self?.diffableDataSource?.snapshot(for: .description) {
-                        self?.diffableDataSource?.apply(sectionSnapshot, to: .description)
-                    }
-                }
+                cell.onExpanded = {self?.applySection(section: .description)}
+                
+            }
+            if let cell = cell as? AppDetailReleaseNoteCollectionViewCell {
+                cell.onExpanded = {self?.applySection(section: .releaseNote)}
             }
             return cell
         }
         
-        diffableDataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
-            if kind == UICollectionView.elementKindSectionHeader {
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.id, for: indexPath)
-                
-                (headerView as? SectionHeaderView)?.apply(title: "미리 보기")
-                return headerView
+        diffableDataSource?.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.id, for: indexPath)
+            let section = self?.diffableDataSource?.sectionIdentifier(for: indexPath.section)
+            var sectionTitle: String
+            switch section {
+            case .screenshot: sectionTitle = "미리 보기"
+            case .releaseNote: sectionTitle = "새로운 기능"
+            default :sectionTitle = ""
             }
-            return nil
+            (headerView as? SectionHeaderView)?.apply(title: sectionTitle)
+            return headerView
+        }
+    }
+    
+    private func applySection(section: AppDetailSecion) {
+        if let sectionSnapshot = diffableDataSource?.snapshot(for: section) {
+            diffableDataSource?.apply(sectionSnapshot, to: section)
         }
     }
     
@@ -90,9 +102,14 @@ final class AppDetailViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
+        super.viewWillDisappear(animated)
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
 }
+

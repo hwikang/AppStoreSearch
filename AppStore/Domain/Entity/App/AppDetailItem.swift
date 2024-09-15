@@ -21,7 +21,8 @@ public struct AppDetailItem: Decodable {
     let trackViewUrl: String
     let artistName: String
     let trackContentRating: String
-    
+    let version: String
+    let currentVersionReleaseDate: String
     enum CodingKeys: String, CodingKey {
         case name = "trackName"
         case id = "trackId"
@@ -36,6 +37,8 @@ public struct AppDetailItem: Decodable {
         case trackViewUrl
         case artistName
         case trackContentRating
+        case version
+        case currentVersionReleaseDate
     }
     
     public init(from decoder: any Decoder) throws {
@@ -53,6 +56,8 @@ public struct AppDetailItem: Decodable {
         self.trackViewUrl = try container.decode(String.self, forKey: .trackViewUrl)
         self.artistName = try container.decode(String.self, forKey: .artistName)
         self.trackContentRating = try container.decode(String.self, forKey: .trackContentRating)
+        self.version = try container.decode(String.self, forKey: .version)
+        self.currentVersionReleaseDate = try container.decode(String.self, forKey: .currentVersionReleaseDate)
     }
 }
 

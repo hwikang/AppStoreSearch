@@ -57,7 +57,7 @@ final class AppListItemTableViewCell: UITableViewCell, AppListCellProtocol {
         contentView.addSubview(ratingCountLabel)
         contentView.addSubview(screenshotStackView)
         appImageView.snp.makeConstraints { make in
-            make.top.equalTo(40)
+            make.top.equalToSuperview()
             make.leading.equalTo(20)
             make.width.height.equalTo(80)
         }
@@ -81,7 +81,7 @@ final class AppListItemTableViewCell: UITableViewCell, AppListCellProtocol {
             make.leading.equalTo(appImageView)
             make.height.equalTo(200)
             make.trailing.equalTo(-20)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(40)
         }
     }
     
